@@ -71,6 +71,11 @@ nav {
 	text-align: center;
 }
 
+.card .card-title {
+	font-family: 'Courgette', cursive;
+	font-size: 26px;
+}
+
 .card .card-content {
 	padding: 24px 10px 24px 10px;
 }
