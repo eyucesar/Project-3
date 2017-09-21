@@ -1,4 +1,4 @@
-$("#readstory").on("click", function () {
+$(".story").on("click", function () {
 	console.log("test");
-	$(".test").css("width", "95%");
+	$(".test").css("width", "94%");
 });
