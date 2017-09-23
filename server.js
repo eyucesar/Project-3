@@ -25,7 +25,7 @@ app.use(express.static("public"));
 // -------------------------------------------------
 
 // MongoDB Configuration configuration (Change this URL to your own DB)
-mongoose.connect("mongodb://localhost/stories");
+mongoose.connect("mongodb://localhost/randomActs");
 var db = mongoose.connection;
 
 db.on("error", function(err) {
@@ -67,27 +67,20 @@ app.post("/signup", function(req, res) {
 
   // Here we'll save the location based on the JSON input.
   // We'll use Date.now() to always get the current date time
-  User.create({
+  var user = new User({
     username: req.body.username,
     password: req.body.password,
     picUrl: req.body.picUrl,
     email: req.body.email,
     date: Date.now()
-  }, function(err) {
-    if (err) {
-      console.log(err);
-    }
-    else {
-      res.send("Saved Search");
-    }
-  });
+  })
+    user.save(function(err, user) {
+        if(err) { 
+          console.log(err) 
+        }
+        res.send("saved")
+    })
 
-  // User.save(function(err) {
-  //       if (err)
-  //          throw err;
-  //       else 
-  //          console.log('saved user successfully...');
-  //   });
 });
 
 // -------------------------------------------------
