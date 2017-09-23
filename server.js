@@ -23,7 +23,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static("public"));
 
 // -------------------------------------------------
-
+mongoose.Promise = global.Promise;
 // MongoDB Configuration configuration (Change this URL to your own DB)
 mongoose.connect("mongodb://localhost/randomActs");
 var db = mongoose.connection;
@@ -60,10 +60,7 @@ db.once("open", function() {
 //   });
 // });
 
-
-
-app.post("/signup", function(req, res) {
-  console.log("BODY: " + req.body);
+app.post("/users", function(req, res) {
 
   // Here we'll save the location based on the JSON input.
   // We'll use Date.now() to always get the current date time
@@ -74,13 +71,38 @@ app.post("/signup", function(req, res) {
     email: req.body.email,
     date: Date.now()
   })
-    user.save(function(err, user) {
-        if(err) { 
-          console.log(err) 
-        }
-        res.send("saved")
-    })
 
+  console.log("BODY: " + req.body);
+
+  user.save(function(err, doc) {
+      if(err) { 
+        console.log(err);
+      } else {
+      res.send(doc);
+      }
+  });
+});
+
+app.post("/stories", function(req, res) {
+
+  // Here we'll save the location based on the JSON input.
+  // We'll use Date.now() to always get the current date time
+  var story = new Story({
+    postedBy: "Ebru",
+    title: req.body.title,
+    longV: req.body.longV,
+    date: Date.now()
+  })
+
+  console.log("BODY: " + req.body);
+
+  story.save(function(err, doc) {
+      if(err) { 
+        console.log(err);
+      } else {
+      res.send(doc);
+      }
+  });
 });
 
 // -------------------------------------------------

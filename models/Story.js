@@ -4,16 +4,20 @@ var Schema = mongoose.Schema;
 var StorySchema = new Schema({
 	postedBy: { type: Schema.Types.ObjectId, ref: 'User' },
 	date: {
-	type: Date,
-	default: Date.now()
+		type: Date,
+		default: Date.now()
+	},
+	title: {
+		type: String,
+		required: true
 	},
 	hearts: {
-	type: Number,
-	default: 0
+		type: Number,
+		default: 0
 	},
 	flags: {
-	type: Number,
-	default: 0
+		type: Number,
+		default: 0
 	},
 	shortVersion: {
 		type: String
