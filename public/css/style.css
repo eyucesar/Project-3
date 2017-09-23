@@ -5,12 +5,8 @@
 .container {
 	width: 80%;
 	margin: 0 auto;
-	margin-top: 40px;
+	padding-top: 30px;
 }
-
-.container .row {
-/*	margin-left: 30px;
-*/}
 
 .brand-logo {
 	width: 50px;
@@ -62,6 +58,45 @@ nav {
 	padding-top: 10px;
 	height: 80px;
 	box-shadow: 0 1px 5px 0 #dfdfdf, 0 1px 5px 0 #dfdfdf, 0 1px 1px -2px #dfdfdf;
+}
+
+#bannerRow {
+	padding-top: 20px;
+	width: 100%;
+	height: 400px;
+	margin: 0;
+	margin-bottom: -30px;
+	background: url(banner3.jpg) no-repeat center center;
+	padding-bottom: 0;
+	-webkit-background-size: cover;    
+    background-size: cover;
+}
+
+h5 {
+	padding: 40px 20px 20px 58px;
+	font-family: Roboto;
+	font-size: 40px;
+	font-weight: bolder;
+}
+
+.textonimage { 
+	position: relative; 
+	width: 100%;
+}
+
+h5 { 
+	position: absolute; 
+	top: 110px; 
+	left: 0; 
+	width: 100%; 
+}
+
+h5 span {
+   color: white; 
+   padding: 2px; 
+   background: #000;
+   opacity: 0.7;
+   line-height: 1.4em;
 }
 
 .card .card-title {
@@ -179,7 +214,7 @@ h1 {
 
 #signupForm, #loginForm, #newStory {
 	padding: 10px 40px 10px 35px;
-	margin-top: 20px;
+	margin-top: 30px;
 	margin-bottom: 30px;
 	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 	background-color: #feeced;
