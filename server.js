@@ -57,9 +57,46 @@ db.once("open", function() {
 // -------------------------------------------------
 
 // // Main "/stories" Route. This will redirect the user to our rendered React application
- app.get("/stories", function(req, res) {
+app.post("/loginCheck", function(req, res) {
+  //console.log("request original url  = " + req.originalUrl + " " + req.url);
+  // if request is coming from login page
+  console.log(req.body.user_name + " " + req.body.pword);
+  User.find({'username':req.body.user_name, 'password':req.body.pword}, function(err, doc) {  
+    if (err) {
+      console.log(err);
+    } else {
+      // if user is found
+      if (doc.length !== 0) {
+        console.log(doc[0]);
+        // get user id and add it to the session
+        const userId = doc[0]._id;
+        console.log("user id = " + userId);
+
+        // run login function from passport to log user id in session
+        req.login(userId, function(err) {
+          res.redirect("/stories");
+        });
+        
+      } else {
+        // user not found
+        console.log("Username or password invalid");
+
+      }
+    }
+  });
+  
+  //res.sendFile(__dirname + "/public/index.html");
+});
+
+// main page with stories
+app.get("/stories", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
+
+app.get("/login", function(req, res) {
+  res.sendFile(__dirname + "/public/login.html");
+});
+
 
 // // This is the route we will send GET requests to retrieve our most recent search data.
 // // We will call this route the moment our page gets rendered
