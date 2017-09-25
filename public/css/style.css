@@ -46,6 +46,11 @@ nav ul a:hover {
 	background-color: white;
 }
 
+/*nav ul a.btn {
+	margin-left: 0;
+	margin-right: 0;
+}*/
+
 .waves-effect {
 	background-color: #fc6d6f;
 }
