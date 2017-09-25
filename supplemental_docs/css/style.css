@@ -2,6 +2,15 @@
 	box-sizing: border-box;
 }
 
+/*dropdown*/
+#dropdown1 {
+	border-radius: 5px;
+}
+
+.dropdown-content li>a {
+	color: black;
+}
+
 .container {
 	width: 80%;
 	margin: 0 auto;

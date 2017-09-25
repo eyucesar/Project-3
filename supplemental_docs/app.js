@@ -32,6 +32,10 @@ window.onload = function() {
 			document.getElementById("test").remove();
 		}
 	}
+
+	//dropdown hover
+	$(".dropdown-button").dropdown({hover: true });
+
 }
 
 

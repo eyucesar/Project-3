@@ -97,6 +97,20 @@ app.get("/login", function(req, res) {
   res.sendFile(__dirname + "/public/login.html");
 });
 
+//serve sign up html when the signup route is hit
+app.use("/signup", function(req, res) {
+  res.sendFile(__dirname + "/public/signup.html");
+});
+
+//serve newstory html when the newstory route is hit
+app.use("/newstory", function(req, res) {
+  res.sendFile(__dirname + "/public/newstory.html");
+});
+
+//redirect to index.html when a nonexisting route is hit
+app.use("*", function(req, res) {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 // // This is the route we will send GET requests to retrieve our most recent search data.
 // // We will call this route the moment our page gets rendered
