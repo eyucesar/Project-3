@@ -58,8 +58,8 @@ db.once("open", function() {
 
 // // Main "/stories" Route. This will redirect the user to our rendered React application
 app.post("/loginCheck", function(req, res) {
-  //console.log("request original url  = " + req.originalUrl + " " + req.url);
-  // if request is coming from login page
+  
+  // request is coming from the login page
   console.log(req.body.user_name + " " + req.body.pword);
   User.find({'username':req.body.user_name, 'password':req.body.pword}, function(err, doc) {  
     if (err) {
@@ -117,31 +117,48 @@ app.get("/login", function(req, res) {
 
 app.post("/users", function(req, res) {
 
-  // Here we'll save the location based on the JSON input.
-  // We'll use Date.now() to always get the current date time
-  var user = new User({
-    username: req.body.username,
-    password: req.body.password,
-    picUrl: req.body.picUrl,
-    email: req.body.email,
-    date: Date.now()
-  });
+  // Check if username and password already exist
 
-  console.log("BODY: " + req.body);
-
-  user.save(function(err, doc) {
-    if(err) { 
-        console.log(err);
+  User.find({'username':req.body.username, 'password':req.body.password}, function(err, doc) {  
+    if (err) {
+      console.log(err);
     } else {
-      //res.send(doc);
-    
-      const userId = doc._id;
-      console.log("user id = " + userId);
-      req.login(userId, function(err) {
-          res.redirect("/stories");
+      // if user is found
+      if (doc.length !== 0) {
+        console.log(doc[0]);
+        console.log("This username and password are taken");
+        
+      } else {
+      // user does not exist in db
+      // Here we'll save the location based on the JSON input.
+      // We'll use Date.now() to always get the current date time
+      var user = new User({
+        username: req.body.username,
+        password: req.body.password,
+        picUrl: req.body.picUrl,
+        email: req.body.email,
+        date: Date.now()
       });
-    }
-  });
+
+      console.log("BODY: " + req.body);
+
+      user.save(function(err, doc) {
+        if(err) { 
+            console.log(err);
+        } else {
+          //res.send(doc);
+        
+          const userId = doc._id;
+          console.log("user id = " + userId);
+          
+          req.login(userId, function(err) {
+              res.redirect("/stories");
+          });
+        }
+      });  // user.save
+    }  // if user not found
+  }
+  });  // user.find
 });
 
 // write user id (serialize) to the session
