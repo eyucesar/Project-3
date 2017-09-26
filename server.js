@@ -260,25 +260,30 @@ app.post("/stories", function(req, res) {
   console.log(req.user);
   console.log(req.isAuthenticated());
 
-  // Here we'll save the location based on the JSON input.
-  // We'll use Date.now() to always get the current date time
-  var story = new Story({
-    postedBy: req.user,
-    title: req.body.title,
-    longVersion: req.body.longV,
-    date: Date.now()
-  })
+  if (req.isAuthenticated()) {
+    // Here we'll save the location based on the JSON input.
+    // We'll use Date.now() to always get the current date time
+    var story = new Story({
+      postedBy: req.user,
+      title: req.body.title,
+      longVersion: req.body.longV,
+      date: Date.now()
+    })
 
-  console.log("BODY: " + req.body);
+    console.log("BODY: " + req.body);
 
-  story.save(function(err, doc) {
-      if(err) { 
-        console.log(err);
-      } else {
-        res.redirect("/stories");
-      }
+    story.save(function(err, doc) {
+        if(err) { 
+          console.log(err);
+        } else {
+          res.redirect("/stories");
+        }
 
-  });
+    });
+  } else {
+    // user is not logged in
+    console.log("Please log in");
+  }
 });
 
 // -------------------------------------------------
