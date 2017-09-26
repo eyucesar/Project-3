@@ -150,7 +150,14 @@ app.post("/login", passport.authenticate("local", {
 
 // main page with stories
 app.get("/stories", function(req, res) {
-  res.sendFile(__dirname + "/public/index.html");
+
+  if (req.isAuthenticated()) {
+    res.sendFile(__dirname + "/public/index_loggedin.html");
+  } else {
+    res.sendFile(__dirname + "/public/index.html");
+  }
+
+
 });
 
 app.get("/login", function(req, res) {
@@ -170,7 +177,13 @@ app.use("/signup", function(req, res) {
 
 //serve newstory html when the newstory route is hit
 app.use("/newstory", function(req, res) {
-  res.sendFile(__dirname + "/public/newstory.html");
+
+  if (req.isAuthenticated()) {
+    res.sendFile(__dirname + "/public/newstory_loggedin.html");
+  } else {
+    res.sendFile(__dirname + "/public/newstory.html");
+  }
+  
 });
 
 //redirect to index.html when a nonexisting route is hit
@@ -207,7 +220,7 @@ app.post("/users", function(req, res) {
       if (doc.length !== 0) {
         console.log(doc[0]);
         console.log("This username and password are taken");
-        
+        res.redirect("/signup");
       } else {
       // user does not exist in db
       // Here we'll save the location based on the JSON input.

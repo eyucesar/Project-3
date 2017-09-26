@@ -46,16 +46,32 @@ nav ul a:hover {
 	background-color: white;
 }
 
-/*nav ul a.btn {
+nav ul a.btn {
 	margin-left: 0;
 	margin-right: 0;
-}*/
+}
+
+/*add spacing between buttons*/
+
+.dropdown-button {
+	background-color: #fc6d6f;
+	width: 200px;
+}
+
+.dropdown-button:hover,.dropdown-button:active,.dropdown-button:focus {
+	background-color: #fc5d60;
+}
+
+.dropdown-content li>a {
+	color: black;
+}
 
 .waves-effect {
 	background-color: #fc6d6f;
+/*	margin-right: 20px;*/
 }
 
-.waves-effect:hover {
+.waves-effect:hover, .waves-effect:active, .waves-effect:focus {
 	background-color: #fc5d60;
 }
 
