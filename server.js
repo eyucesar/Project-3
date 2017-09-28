@@ -143,22 +143,43 @@ passport.use(new LocalStrategy(
 
 // post login route
 app.post("/login", passport.authenticate("local", {
-  successRedirect: "/stories",
+  successRedirect: "/loggedin",
   failureRedirect: "/login"
 }));
 
+app.get("/", function(req,res) {
+  res.sendFile(__dirname + "/public/index.html");
+});
+
+app.get("/loggedin", function(req,res) {
+  res.sendFile(__dirname + "/public/index_loggedin.html");
+});
 
 // main page with stories
 app.get("/stories", function(req, res) {
 
-  if (req.isAuthenticated()) {
-    res.sendFile(__dirname + "/public/index_loggedin.html");
-  } else {
-    res.sendFile(__dirname + "/public/index.html");
-  }
+  // if (req.isAuthenticated()) {
+  //   res.sendFile(__dirname + "/public/index_loggedin.html");
+  // } else {
+  //   res.sendFile(__dirname + "/public/index.html");
+  // }
+  console.log("app.get /stories");
 
-
+  // We will find all the records, sort it in descending order, then limit the records to 5
+    Story.find({}).sort([
+    ["date", "descending"]
+    ]).limit(10).exec(function(err, doc) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      console.log(doc);
+      res.send(doc);
+    }
+  });
 });
+
+
 
 app.get("/login", function(req, res) {
   res.sendFile(__dirname + "/public/login.html");
@@ -245,7 +266,7 @@ app.post("/users", function(req, res) {
           console.log("user id = " + userId);
           
           req.login(userId, function(err) {
-              res.redirect("/stories");
+              res.redirect("/loggedin");
           });
         }
       });  // user.save
@@ -289,7 +310,7 @@ app.post("/stories", function(req, res) {
         if(err) { 
           console.log(err);
         } else {
-          res.redirect("/stories");
+          res.redirect("/loggedin");
         }
 
     });
