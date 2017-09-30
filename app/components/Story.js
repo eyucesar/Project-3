@@ -8,19 +8,34 @@ var moment = require("moment");
 var helpers = require("./utils/helpers");
 
 var Story = React.createClass({
+
+  // getInitialState: function(){
+  //       return {
+  //           expanded: 'passive'
+  //       };
+  // },
+  // handleClick: function(){
+  //       if (this.state.expanded === 'passive'){
+  //           this.setState({expanded: 'active'});
+  //       } else {
+  //           this.setState({expanded: 'passive'});
+  //       }
+  //   },
+
   render: function() {
     return (
       
+    // <div className="row" className={this.state.expanded} onClick={this.handleClick}>
     <div className="row">
       {this.props.story.map((card, i) => {
         
           return (
        
           <div key={i}>
-           <div className="card blue-grey darken-1 col s12 m4" id="test">
+           <div className="card blue-grey darken-1 col s12 m4">
             <div className="card-content white-text">
               <span className="card-title">{card.title}</span>
-              <p id="char">{card.longVersion}</p>
+              <p>{card.longVersion}</p>
               <a className="story" id="expand" href="#">read story</a>
             </div>
             <div className="card-action">
@@ -31,8 +46,8 @@ var Story = React.createClass({
             </div>
           </div>
         </div>
-        ); // return 
 
+        ); // return 
 
       })}
       </div>

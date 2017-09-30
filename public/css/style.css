@@ -8,6 +8,15 @@
 	padding-top: 14px;
 }
 
+/*classes for expanded/shrunk card divs*/
+.active {
+	width: 150%;
+}
+
+.passive {
+	width: 100%;
+}
+
 .brand-logo {
 	width: 50px;
 	height: auto;
