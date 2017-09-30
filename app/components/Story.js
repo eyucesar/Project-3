@@ -1,6 +1,9 @@
 // Include React
 var React = require("react");
 
+//library to convert mongoDB date isoDate format
+var moment = require("moment");
+
 // Helper for making AJAX requests to our API
 var helpers = require("./utils/helpers");
 
@@ -9,21 +12,21 @@ var Story = React.createClass({
     return (
       
     <div className="row">
-      {this.props.story.map((search, i) => {
+      {this.props.story.map((card, i) => {
         
           return (
        
           <div key={i}>
            <div className="card blue-grey darken-1 col s12 m4" id="test">
             <div className="card-content white-text">
-              <span className="card-title">{search.title}</span>
-              <p id="char">{search.longVersion}</p>
+              <span className="card-title">{card.title}</span>
+              <p id="char">{card.longVersion}</p>
               <a className="story" id="expand" href="#">read story</a>
             </div>
             <div className="card-action">
-              <span className="date">{search.date}</span>
-              <i className="fa fa-exclamation-circle" id="flag" aria-hidden="true" title="mark inappropriate"><span id="flagCounter">&nbsp;&nbsp;0</span></i>
-              <i className="fa fa-heart fa-lg" id="heart" aria-hidden="true" title="like story"><span id="heartCounter"> 0</span></i>
+              <span className="date">{moment(card.date).format('ll')}</span>
+              <i className="fa fa-exclamation-circle" id="flag" aria-hidden="true" title="mark inappropriate"><span id="flagCounter">&nbsp;&nbsp;{card.flags}</span></i>
+              <i className="fa fa-heart fa-lg" id="heart" aria-hidden="true" title="like story"><span id="heartCounter"> {card.hearts}</span></i>
               <img className="author" src="css/ebru.jpg" alt="user_image" title="eyucesar"/>
             </div>
           </div>

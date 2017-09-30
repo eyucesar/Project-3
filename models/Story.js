@@ -5,7 +5,7 @@ var StorySchema = new Schema({
 	postedBy: { type: Schema.Types.ObjectId, ref: 'User' },
 	date: {
 		type: Date,
-		default: Date.now()
+		default: Date.now
 	},
 	title: {
 		type: String,

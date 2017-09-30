@@ -20,7 +20,7 @@ var UserSchema = new Schema({
   },
   date: {
     type: Date,
-    default: Date.now()
+    default: Date.now
   },
   story: {
   	type: Schema.Types.ObjectId,
