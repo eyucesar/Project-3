@@ -16,20 +16,20 @@ var Story = React.createClass({
   },
   handleClick: function(i, e){
         e.preventDefault();
-        var newstate = this.state.expanded
-        if (this.state.expanded[i] === 'passive'){
-            newstate[i] = 'active'
+        var newstate = this.state.expanded;
+        if (this.state.expanded[i] === 'passive') {
+            newstate[i] = 'active';
         } else {
-            newstate[i] = 'passive'
+            newstate[i] = 'passive';
         }
         this.setState({expanded: newstate});
     },
 
   render: function() {
-    console.log(this.state.expanded)
+    console.log(this.state.expanded);
     return (
       
-    <div className="row">
+    <div>
       {this.props.story.map((card, i) => {
           
           return (

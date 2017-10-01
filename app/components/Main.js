@@ -62,16 +62,7 @@ var Main = React.createClass({
   // Here we render the function
   render: function() {
     return (
-      <div className="container">
-        
-
-        <div className="row">
-
-          <Story story={this.state.story} />
-
-        </div>
-
-      </div>
+        <Story story={this.state.story} />
     );
   }
 });

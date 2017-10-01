@@ -5,7 +5,7 @@
 .container {
 	width: 86%;
 	margin: 0 auto;
-	padding-top: 14px;
+	padding-top: 25px;
 }
 
 /*classes for expanded/shrunk card divs*/
@@ -27,7 +27,7 @@
 	height: auto;
 	border-radius: 5px;
 	margin-left: 30px;
-	margin-top: 5px;
+	margin-top: 3px;
 	position: absolute;
 }
 
@@ -264,10 +264,15 @@ h1 {
 
 #signupForm, #loginForm, #newStory {
 	padding: 10px 40px 10px 35px;
-	margin-top: 40px;
+	margin-top: 30px;
 	margin-bottom: 30px;
 	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 	background-color: #feeced;
+}
+
+.fixed-action-btn {
+	left: 0;
+	text-align: right;
 }
 
 #submit {
