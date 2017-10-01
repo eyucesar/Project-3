@@ -273,6 +273,7 @@ h1 {
 .fixed-action-btn {
 	left: 0;
 	text-align: right;
+	padding-right: 20px;
 }
 
 #submit {
