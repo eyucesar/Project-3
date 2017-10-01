@@ -9,34 +9,37 @@ var helpers = require("./utils/helpers");
 
 var Story = React.createClass({
 
-  // getInitialState: function(){
-  //       return {
-  //           expanded: 'passive'
-  //       };
-  // },
-  // handleClick: function(){
-  //       if (this.state.expanded === 'passive'){
-  //           this.setState({expanded: 'active'});
-  //       } else {
-  //           this.setState({expanded: 'passive'});
-  //       }
-  //   },
+  getInitialState: function(){
+        return {
+            expanded: []
+        };
+  },
+  handleClick: function(i, e){
+        e.preventDefault();
+        var newstate = this.state.expanded
+        if (this.state.expanded[i] === 'passive'){
+            newstate[i] = 'active'
+        } else {
+            newstate[i] = 'passive'
+        }
+        this.setState({expanded: newstate});
+    },
 
   render: function() {
+    console.log(this.state.expanded)
     return (
       
-    // <div className="row" className={this.state.expanded} onClick={this.handleClick}>
     <div className="row">
       {this.props.story.map((card, i) => {
-        
+          
           return (
        
-          <div key={i}>
+          <div key={i} className={this.state.expanded[i]}>
            <div className="card blue-grey darken-1 col s12 m4">
             <div className="card-content white-text">
               <span className="card-title">{card.title}</span>
               <p>{card.longVersion}</p>
-              <a className="story" id="expand" href="#">read story</a>
+              <a className="story" id="expand" onClick={(e) => this.handleClick(i, e)} href="#">read story</a>
             </div>
             <div className="card-action">
               <span className="date">{moment(card.date).format('ll')}</span>

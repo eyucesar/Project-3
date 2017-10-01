@@ -10,7 +10,12 @@
 
 /*classes for expanded/shrunk card divs*/
 .active {
-	width: 150%;
+	width: 200%;
+	padding: 0;
+}
+
+.active .card .card-content p {
+	max-width: 1000px;
 }
 
 .passive {
