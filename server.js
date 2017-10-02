@@ -106,7 +106,7 @@ db.once("open", function() {
 // });
 
 // called from authenticate in post /login
-// username and password names cannot be changed and come from form
+// username and password names cannot be changed and come from passport local
 passport.use(new LocalStrategy(
   function(username, password, done) {
     
@@ -344,6 +344,32 @@ app.post("/updateHearts", function(req, res) {
   });
 
 });
+
+app.post("/updateFlags", function(req, res) {
+  console.log(req.body);
+  var id=req.body.id;
+  var flags=parseInt(req.body.flags);
+
+  console.log("here " + id + " " + flags);
+  Story.findOneAndUpdate({
+    _id: id
+  }, {
+    $set: {
+      flags: flags
+    }
+  }, { upsert: true }).exec(function(err) {
+
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send({updated: true});
+
+    }
+  });
+
+});
+
 
 // -------------------------------------------------
 

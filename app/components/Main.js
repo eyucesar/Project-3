@@ -12,8 +12,11 @@ var Main = React.createClass({
 
   // Here we set a generic state associated with the number of clicks
   // Note how we added in this story state variable
+  // counterMain is a dummy value. When hearts/flags are updated, 
+  // this is set so that the main component renders again
+
   getInitialState: function() {
-    return { story: [], heartsMain: 0};
+    return { story: [], heartsMain: 0, flagsMain: 0};
   },
 
 
@@ -33,7 +36,7 @@ var Main = React.createClass({
   // If the component changes (i.e. if the heart or flag counters are updated)...
   componentDidUpdate: function(prevProps, prevState) {
 
-    if (this.state.heartsMain !== prevState.heartsMain) {
+    if ( (this.state.heartsMain !== prevState.heartsMain) || (this.state.flagsMain !== prevState.flagsMain) ) {
     // Get the latest stories.
     console.log("in didmount");
     helpers.getStories().then(function(response) {
@@ -43,44 +46,28 @@ var Main = React.createClass({
         this.setState({ story: response.data });
       }
     }.bind(this));
-}
+  }
 
-    // // Run the query for the address
-    // helpers.runQuery(this.state.searchTerm).then(function(data) {
-    //   if (data !== this.state.results) {
-    //     console.log("Address", data);
-    //     this.setState({ results: data });
-
-    //     // After we've received the result... then post the search term to our story.
-    //     helpers.poststory(this.state.searchTerm).then(function() {
-    //       console.log("Updated!");
-
-    //       // After we've done the post... then get the updated story
-    //       helpers.getstory().then(function(response) {
-    //         console.log("Current story", response.data);
-
-    //         console.log("story", response.data);
-
-    //         this.setState({ story: response.data });
-
-    //       }.bind(this));
-    //     }.bind(this));
-    //   }
-    // }.bind(this));
+    
   },
 
-  // This function allows childrens to update the parent. To re-render after heart of flag counter is clicked
-  setTerm: function(hearts) {
-    console.log("in set term");
-    this.setState({heartsMain: hearts});
+  // This function allows childrens to update the parent. To re-render after heart counter is clicked
+  setHeartCounter: function(count) {
+    console.log("in set counter");
+    this.setState({heartsMain: count});
   },
 
+  // This function allows childrens to update the parent. To re-render after flag counter is clicked
+  setFlagCounter: function(count) {
+    console.log("in set counter");
+    this.setState({flagsMain: count});
+  },
 
   // Here we render the function
   render: function() {
     return (
         
-        <Story story={this.state.story} setTerm={this.setTerm} />
+        <Story story={this.state.story} setHeartCounter={this.setHeartCounter} setFlagCounter={this.setFlagCounter}/>
     );
   }
 });

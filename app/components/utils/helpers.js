@@ -19,11 +19,14 @@ var helper = {
   },
 
   updateHearts(id, hearts) {
-    
-    console.log("updating " + id +" " + hearts);
-    return axios.post("/updateHearts", {id, hearts});
-  }
+   console.log("updating " + id +" " + hearts);
+   return axios.post("/updateHearts", {id, hearts});
+  },
 
+  updateFlags(id, flags) {
+   console.log("updating " + id +" " + flags);
+   return axios.post("/updateFlags", {id, flags});
+  }
 
 };
 

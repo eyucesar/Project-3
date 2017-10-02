@@ -35,7 +35,18 @@ var Story = React.createClass({
       
     });
     this.setState({hearts:hearts});
-    this.props.setTerm(hearts);
+    this.props.setHeartCounter(hearts);
+  },
+
+  handleFlagClick: function(i) {
+    var flags = parseInt(this.props.story[i].flags) + 1;
+    console.log("in handleFlagClick ", this.props.story[i]._id, " ", flags);
+    helpers.updateFlags(this.props.story[i]._id, flags).then(function (h) {
+      console.log("Posted to MongoDB", h.data);
+      
+    });
+    this.setState({flags:flags});
+    this.props.setFlagCounter(flags);
   },
 
   render: function() {
@@ -56,7 +67,7 @@ var Story = React.createClass({
             </div>
             <div className="card-action">
               <span className="date">{moment(card.date).format('ll')}</span>
-              <i className="fa fa-exclamation-circle" id="flag" aria-hidden="true" title="mark inappropriate"><span id="flagCounter">&nbsp;&nbsp;{card.flags}</span></i>
+              <i className="fa fa-exclamation-circle" id="flag" aria-hidden="true" title="mark inappropriate"><button id="flagCounter" onClick={() => this.handleFlagClick(i)}>{card.flags}</button></i>
               <i className="fa fa-heart fa-lg" id="heart" aria-hidden="true" title="like story"><button id="heartCounter" onClick={() => this.handleHeartClick(i)}>{card.hearts}</button></i>
 
               <img className="author" src="css/ebru.jpg" alt="user_image" title="eyucesar"/>
