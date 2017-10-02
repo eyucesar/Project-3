@@ -13,8 +13,9 @@ var Main = React.createClass({
   // Here we set a generic state associated with the number of clicks
   // Note how we added in this story state variable
   getInitialState: function() {
-    return { story: [] };
+    return { story: [], heartsMain: 0};
   },
+
 
   // The moment the page renders get the Stories
   componentDidMount: function() {
@@ -29,8 +30,20 @@ var Main = React.createClass({
     }.bind(this));
   },
 
-  // If the component changes (i.e. if a search is entered)...
-  componentDidUpdate: function() {
+  // If the component changes (i.e. if the heart or flag counters are updated)...
+  componentDidUpdate: function(prevProps, prevState) {
+
+    if (this.state.heartsMain !== prevState.heartsMain) {
+    // Get the latest stories.
+    console.log("in didmount");
+    helpers.getStories().then(function(response) {
+      console.log("response = ", response.data);
+      if (response !== this.state.story) {
+        console.log("story", response.data);
+        this.setState({ story: response.data });
+      }
+    }.bind(this));
+}
 
     // // Run the query for the address
     // helpers.runQuery(this.state.searchTerm).then(function(data) {
@@ -55,14 +68,19 @@ var Main = React.createClass({
     //   }
     // }.bind(this));
   },
-  // This function allows childrens to update the parent.
-  setTerm: function(story) {
-    this.setState({ story: story });
+
+  // This function allows childrens to update the parent. To re-render after heart of flag counter is clicked
+  setTerm: function(hearts) {
+    console.log("in set term");
+    this.setState({heartsMain: hearts});
   },
+
+
   // Here we render the function
   render: function() {
     return (
-        <Story story={this.state.story} />
+        
+        <Story story={this.state.story} setTerm={this.setTerm} />
     );
   }
 });

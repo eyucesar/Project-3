@@ -233,14 +233,14 @@ app.post("/users", function(req, res) {
 
   // Check if username and password already exist
 
-  User.find({'username':req.body.username, 'password':req.body.password}, function(err, doc) {  
+  User.find({'username':req.body.username}, function(err, doc) {  
     if (err) {
       console.log(err);
     } else {
       // if user is found
       if (doc.length !== 0) {
         console.log(doc[0]);
-        console.log("This username and password are taken");
+        console.log("This username is taken");
         res.redirect("/signup");
       } else {
       // user does not exist in db
@@ -318,6 +318,31 @@ app.post("/stories", function(req, res) {
     // user is not logged in
     console.log("Please log in");
   }
+});
+
+app.post("/updateHearts", function(req, res) {
+  console.log(req.body);
+  var id=req.body.id;
+  var hearts=parseInt(req.body.hearts);
+
+  console.log("here " + id + " " + hearts);
+  Story.findOneAndUpdate({
+    _id: id
+  }, {
+    $set: {
+      hearts: hearts
+    }
+  }, { upsert: true }).exec(function(err) {
+
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send({updated: true});
+
+    }
+  });
+
 });
 
 // -------------------------------------------------

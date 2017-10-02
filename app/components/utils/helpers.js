@@ -16,7 +16,15 @@ var helper = {
   // This function posts new searches to our database.
   postHistory: function(location) {
     return axios.post("/api", { location: location });
+  },
+
+  updateHearts(id, hearts) {
+    
+    console.log("updating " + id +" " + hearts);
+    return axios.post("/updateHearts", {id, hearts});
   }
+
+
 };
 
 // We export the API helper

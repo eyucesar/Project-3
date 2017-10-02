@@ -11,19 +11,32 @@ var Story = React.createClass({
 
   getInitialState: function(){
         return {
-            expanded: []
+            expanded: [], 
+            hearts:0, 
+            flags:0
         };
   },
   handleClick: function(i, e){
-        e.preventDefault();
-        var newstate = this.state.expanded;
-        if (this.state.expanded[i] === 'passive') {
-            newstate[i] = 'active';
-        } else {
-            newstate[i] = 'passive';
-        }
-        this.setState({expanded: newstate});
-    },
+    e.preventDefault();
+    var newstate = this.state.expanded;
+    if (this.state.expanded[i] === 'passive') {
+        newstate[i] = 'active';
+    } else {
+        newstate[i] = 'passive';
+    }
+    this.setState({expanded: newstate});
+  },
+
+  handleHeartClick: function(i) {
+    var hearts = parseInt(this.props.story[i].hearts) + 1;
+    console.log("in handleHeartClick ", this.props.story[i]._id, " ", hearts);
+    helpers.updateHearts(this.props.story[i]._id, hearts).then(function (h) {
+      console.log("Posted to MongoDB", h.data);
+      
+    });
+    this.setState({hearts:hearts});
+    this.props.setTerm(hearts);
+  },
 
   render: function() {
     console.log(this.state.expanded);
@@ -44,7 +57,8 @@ var Story = React.createClass({
             <div className="card-action">
               <span className="date">{moment(card.date).format('ll')}</span>
               <i className="fa fa-exclamation-circle" id="flag" aria-hidden="true" title="mark inappropriate"><span id="flagCounter">&nbsp;&nbsp;{card.flags}</span></i>
-              <i className="fa fa-heart fa-lg" id="heart" aria-hidden="true" title="like story"><span id="heartCounter"> {card.hearts}</span></i>
+              <i className="fa fa-heart fa-lg" id="heart" aria-hidden="true" title="like story"><button id="heartCounter" onClick={() => this.handleHeartClick(i)}>{card.hearts}</button></i>
+
               <img className="author" src="css/ebru.jpg" alt="user_image" title="eyucesar"/>
             </div>
           </div>
