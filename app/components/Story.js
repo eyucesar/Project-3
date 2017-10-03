@@ -69,7 +69,9 @@ var Story = React.createClass({
               <span className="date">{moment(card.date).format('ll')}</span>
               <i onClick={() => this.handleFlagClick(i)}className="fa fa-exclamation-circle" id="flag" aria-hidden="true" title="mark inappropriate"><button id="flagCounter" onClick={() => this.handleFlagClick(i)}>{card.flags}</button></i>
               <i onClick={() => this.handleHeartClick(i)}className="fa fa-heart fa-lg" id="heart" aria-hidden="true" title="like story"><button id="heartCounter" onClick={() => this.handleHeartClick(i)}>{card.hearts}</button></i>
-              <img className="author" src="css/ebru.jpg" alt="user_image" title="eyucesar"/>
+              <img className="author" src={card.postedBy.picUrl} alt="user_image" title="userImage"/>
+
+              
             </div>
           </div>
         </div>

@@ -168,7 +168,8 @@ app.get("/stories", function(req, res) {
   // We will find all the records, sort it in descending order, then limit the records to 5
     Story.find({}).sort([
     ["date", "descending"]
-    ]).limit(10).exec(function(err, doc) {
+    ]).populate("postedBy")
+    .limit(10).exec(function(err, doc) {
     if (err) {
       console.log(err);
     }
