@@ -12,8 +12,8 @@ var Story = React.createClass({
   getInitialState: function(){
         return {
             expanded: [], 
-            hearts:0, 
-            flags:0
+            hearts: 0, 
+            flags: 0
         };
   },
   handleClick: function(i, e){
@@ -34,7 +34,7 @@ var Story = React.createClass({
       console.log("Posted to MongoDB", h.data);
       
     });
-    this.setState({hearts:hearts});
+    this.setState({hearts: hearts});
     this.props.setHeartCounter(hearts);
   },
 
@@ -45,7 +45,7 @@ var Story = React.createClass({
       console.log("Posted to MongoDB", h.data);
       
     });
-    this.setState({flags:flags});
+    this.setState({flags: flags});
     this.props.setFlagCounter(flags);
   },
 
@@ -67,9 +67,8 @@ var Story = React.createClass({
             </div>
             <div className="card-action">
               <span className="date">{moment(card.date).format('ll')}</span>
-              <i className="fa fa-exclamation-circle" id="flag" aria-hidden="true" title="mark inappropriate"><button id="flagCounter" onClick={() => this.handleFlagClick(i)}>{card.flags}</button></i>
-              <i className="fa fa-heart fa-lg" id="heart" aria-hidden="true" title="like story"><button id="heartCounter" onClick={() => this.handleHeartClick(i)}>{card.hearts}</button></i>
-
+              <i onClick={() => this.handleFlagClick(i)}className="fa fa-exclamation-circle" id="flag" aria-hidden="true" title="mark inappropriate"><button id="flagCounter" onClick={() => this.handleFlagClick(i)}>{card.flags}</button></i>
+              <i onClick={() => this.handleHeartClick(i)}className="fa fa-heart fa-lg" id="heart" aria-hidden="true" title="like story"><button id="heartCounter" onClick={() => this.handleHeartClick(i)}>{card.hearts}</button></i>
               <img className="author" src="css/ebru.jpg" alt="user_image" title="eyucesar"/>
             </div>
           </div>

@@ -10,8 +10,10 @@
 
 /*classes for expanded/shrunk card divs*/
 .active {
-	width: 200%;
+	width: 312%;
 	padding: 0;
+	float: left;
+	margin-left: -27px;
 }
 
 .active .card .card-content p {
@@ -224,6 +226,8 @@ h1 {
 	color: black;
 	font-family: Roboto;
 	font-size: 12px;
+	border: none;
+	background-color: #feeced;
 }
 
 #flagCounter {
