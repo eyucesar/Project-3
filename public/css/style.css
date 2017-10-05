@@ -13,8 +13,8 @@
 	width: 313%;
 	padding: 0;
 	float: left;
-	margin-left: -27px;
-}
+/*	margin-left: -27px;
+*/}
 
 .active .card .card-content p {
 	max-width: 1000px;
