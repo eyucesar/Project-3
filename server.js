@@ -68,43 +68,6 @@ db.once("open", function() {
 });
 
 
-
-
-
-// -------------------------------------------------
-
-// // "/login" Route. This will redirect the user to our rendered React application
-// app.post("/login", function(req, res) {
-  
-//   // request is coming from the login page
-//   console.log(req.body.user_name + " " + req.body.pword);
-//   User.find({'username':req.body.user_name, 'password':req.body.pword}, function(err, doc) {  
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       // if user is found
-//       if (doc.length !== 0) {
-//         console.log(doc[0]);
-//         // get user id and add it to the session
-//         const userId = doc[0]._id;
-//         console.log("user id = " + userId);
-
-//         // run login function from passport to log user id in session
-//         req.login(userId, function(err) {
-//           res.redirect("/stories");
-//         });
-        
-//       } else {
-//         // user not found
-//         console.log("Username or password invalid");
-
-//       }
-//     }
-//   });
-  
-//   //res.sendFile(__dirname + "/public/index.html");
-// });
-
 // called from authenticate in post /login
 // username and password names cannot be changed and come from passport local
 passport.use(new LocalStrategy(
@@ -119,17 +82,10 @@ passport.use(new LocalStrategy(
     } else {
       // if user is found
       if (doc.length !== 0) {
-        console.log(doc[0]);
         // get user id and add it to the session
         const userId = doc[0]._id;
-        console.log("user id = " + userId);
 
-        // run login function from passport to log user id in session
-        
-        //req.login(userId, function(err) {
-          
           return done(null, userId);
-        //});
         
       } else {
         // user not found
@@ -144,7 +100,7 @@ passport.use(new LocalStrategy(
 // post login route
 app.post("/login", passport.authenticate("local", {
   successRedirect: "/loggedin",
-  failureRedirect: "/login"
+  failureRedirect: "/signup"
 }));
 
 app.get("/", function(req,res) {
@@ -157,13 +113,6 @@ app.get("/loggedin", function(req,res) {
 
 // main page with stories
 app.get("/stories", function(req, res) {
-
-  // if (req.isAuthenticated()) {
-  //   res.sendFile(__dirname + "/public/index_loggedin.html");
-  // } else {
-  //   res.sendFile(__dirname + "/public/index.html");
-  // }
-  console.log("app.get /stories");
 
   // We will find all the records, sort it in descending order, then limit the records to 5
     Story.find({}).sort([
@@ -193,17 +142,17 @@ app.get("/logout", function(req, res) {
 });
 
 //serve sign up html when the signup route is hit
-app.use("/signup", function(req, res) {
+app.get("/signup", function(req, res) {
   res.sendFile(__dirname + "/public/signup.html");
 });
 
 //serve newstory html when the newstory route is hit
-app.use("/newstory", function(req, res) {
+app.get("/newstory", function(req, res) {
 
   if (req.isAuthenticated()) {
     res.sendFile(__dirname + "/public/newstory_loggedin.html");
   } else {
-    res.sendFile(__dirname + "/public/newstory.html");
+    res.redirect('/login');
   }
   
 });
@@ -241,8 +190,7 @@ app.post("/users", function(req, res) {
       // if user is found
       if (doc.length !== 0) {
         console.log(doc[0]);
-        console.log("This username is taken");
-        res.redirect("/signup");
+        res.redirect("/loggedin");
       } else {
       // user does not exist in db
       // Here we'll save the location based on the JSON input.
