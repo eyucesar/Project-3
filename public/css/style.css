@@ -6,7 +6,7 @@
 	width: 86%;
 	margin: 0 auto;
 	padding-top: 25px;
-	padding-left: 4%;
+	padding-left: 5%;
 }
 
 /*classes for expanded/shrunk card divs*/
@@ -63,6 +63,7 @@ nav ul a {
 
 nav ul a:hover {
 	background-color: white;
+	font-weight: 900;
 }
 
 nav ul a.btn {
@@ -344,24 +345,188 @@ footer {
 	font-weight: bolder;
 }
 
-@media only screen and (max-width: 1065px) {
-    .blue-grey.darken-1:nth-of-type(odd), .blue-grey.darken-1:nth-of-type(even)  {
-      width: 40%;
-    }
-
-    .container .row {
-    	margin-right: 0px;
-    }
-}
-
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
 	.blue-grey.darken-1:nth-of-type(odd), .blue-grey.darken-1:nth-of-type(even)  {
-      width: 100%;
-      margin-left: -14px;
+    	width: 45%;
+    	margin-right: 3%;
+		position: relative;
     }
 
-    .container .row {
-    	margin-right: 0px;
+    .active {
+    	width: 207%;
+		padding: 0;
+		float: left;
+		margin: 0 auto;
+    }
+
+    .card .card-content p {
+    	height: 150px;
+    	max-width: 690px;
+    }
+
+    .container {
+    	padding-left: 7%;
+    }
+
+    .dropdown-button.btn.active {
+    	width: 200px;
     }
 }
 
+@media only screen and (max-width: 992px) {
+	nav .brand-logo {
+		left: 5%;
+	}
+}
+
+@media only screen and (max-width: 979px) {
+	h5 {
+		font-size: 36px;
+	}
+
+	.textonimage {
+		position: absolute;
+		top: 30px;
+		left: 0;
+	}
+}
+
+@media only screen and (max-width: 850px) {
+
+#brand-name {
+		margin-left: -10px;
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	.blue-grey.darken-1:nth-of-type(odd), .blue-grey.darken-1:nth-of-type(even) {
+	    width: 100%;
+		position: relative;
+    }
+
+    .active {
+    	width: 100%;
+    }
+
+    .card .card-content p {
+    	height: 70px;
+    	max-width: 690px;
+    }
+
+	.container {
+		padding-left: 2%;
+		padding-right: 2%;
+	}
+}
+
+@media only screen and (max-width: 630px) {
+	nav ul a {
+		padding: 0 10px 0 0;
+	}
+
+	.dropdown-button {
+		width: 150px;
+	}
+
+	.dropdown-button.btn.active {
+    	width: 150px;
+    }
+
+	.dropdown-content li>a>i {
+		margin-right: 6px;
+		font-size: 20px;
+		font-weight: bolder;
+	}
+
+	.dropdown-content li>a {
+		font-size: 15px;
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	#brand-name {
+		margin-left: -20px;
+	}
+
+	.right {
+		margin-top: 46px;
+	}
+
+	nav {
+		height: 116px;
+		padding-right: 3%;
+	}
+}
+
+@media only screen and (max-width: 520px) {
+
+	nav {
+		height: 116px;
+		padding-right: 3%;
+	}
+
+	#brand-name {
+		margin-left: -30px;
+	}
+}
+
+@media only screen and (max-width: 510px) {
+	h5 {
+		font-size: 32px;
+	}
+
+	#brand-name {
+		margin-left: -40px;
+	}
+
+	nav .brand-logo {
+		left: 1%;
+	}
+}
+
+@media only screen and (max-width: 463px) {
+	h5 {
+		font-size: 30px;
+	}
+}
+
+@media only screen and (max-width: 440px) {
+	.textonimage {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
+@media only screen and (max-width: 414px) {
+	#brand-name {
+		margin-left: -46px;
+	}
+
+	nav .brand-logo {
+		left: 1%;
+	}
+}
+
+@media only screen and (max-width: 360px) {
+	h5 {
+		font-size: 28px;
+	}
+
+	nav ul li {
+		margin-top: 46px;
+	}
+
+	nav {
+		height: 116px;
+		padding-right: 3%;
+	}
+
+	nav .brand-logo {
+		left: 1%;
+	}
+
+	#brand-name {
+		margin-left: -30px;
+	}
+}

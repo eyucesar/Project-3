@@ -63,7 +63,7 @@ var Story = React.createClass({
             <div className="card-content white-text">
               <span className="card-title">{card.title}</span>
               <p>{card.longVersion}</p>
-              <a className="story" id="expand" onClick={(e) => this.handleClick(i, e)} href="#">read story</a>
+              <a className="story" id="expand" onClick={(e) => this.handleClick(i, e)} href="#">continue reading</a>
             </div>
             <div className="card-action">
               <span className="date">{moment(card.date).format('ll')}</span>
