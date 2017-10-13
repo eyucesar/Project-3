@@ -6,6 +6,7 @@
 	width: 86%;
 	margin: 0 auto;
 	padding-top: 25px;
+	padding-left: 4%;
 }
 
 /*classes for expanded/shrunk card divs*/
@@ -13,10 +14,12 @@
 	width: 313%;
 	padding: 0;
 	float: left;
+	margin: 0 auto;
 }
 
 .active .card .card-content p {
-	max-width: 1000px;
+	max-width: 1100px;
+	height: auto;
 }
 
 .passive {
@@ -158,20 +161,23 @@ p {
 	white-space: pre-line;
 }
 
-.blue-grey.darken-1:nth-of-type(odd) {
+.blue-grey.darken-1:nth-of-type(odd), .blue-grey.darken-1:nth-of-type(even) {
 	background-color: #feeced !important;
-	width: 31%;
-	margin-right: 1%;
-	margin-left: 1%;
+	width: 30%;
+	margin-right: 2%;
 	position: relative;
 }
 
-.blue-grey.darken-1:nth-of-type(even) {
-	background-color: #feeced !important;
-	width: 31%;
-	margin-right: 1%;
-	margin-left: 1%;
-	position: relative;
+.blue-grey.darken-1:nth-of-type(odd):hover, .blue-grey.darken-1:nth-of-type(even):hover {
+	background-color: #fdd4d6 !important;
+}
+
+.blue-grey.darken-1:hover #flagCounter {
+	background-color: #fdd4d6 !important;
+}
+
+.blue-grey.darken-1:hover #heartCounter {
+	background-color: #fdd4d6 !important;
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
@@ -195,7 +201,7 @@ p {
     display: block;
     display: -webkit-box;
     max-width: 400px;
-    height: 250px;
+    height: 200px;
     margin: 0 auto;
     padding-top: 5px;
     font-size: 14px;

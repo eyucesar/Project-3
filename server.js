@@ -57,6 +57,7 @@ app.use(passport.session());
 mongoose.Promise = global.Promise;
 // MongoDB Configuration configuration (Change this URL to your own DB)
 mongoose.connect("mongodb://heroku_9g8jmvjq:7cp4oeh392rkdrrmflo96404nt@ds157624.mlab.com:57624/heroku_9g8jmvjq");
+// mongoose.connect("mongodb://localhost/randomActs");
 var db = mongoose.connection;
 
 db.on("error", function(err) {
