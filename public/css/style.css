@@ -63,7 +63,7 @@ nav ul a {
 
 nav ul a:hover {
 	background-color: white;
-	font-weight: 900;
+	font-size: 16px;
 }
 
 nav ul a.btn {
@@ -86,7 +86,6 @@ nav ul a.btn {
 
 .waves-effect {
 	background-color: #fc6d6f;
-/*	margin-right: 20px;*/
 }
 
 .waves-effect:hover, .waves-effect:active, .waves-effect:focus {
@@ -252,14 +251,16 @@ h1 {
 	float: right;
 	margin-right: 0;
 	text-decoration: none !important;
-	color: black;
+	color: #757575;
 	font-size: 12px;
 	font-weight: bolder;
 	padding-right: 10px;
+	margin-top: 5px;
+	font-style: italic;
 }
 
 .story:hover {
-	font-size: 13px;
+	color: black;
 }
 
 .date {

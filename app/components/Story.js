@@ -1,12 +1,10 @@
-// Include React
+// include React
 var React = require("react");
-
-//library to convert mongoDB date isoDate format
+// library to convert mongoDB isoDate format to regular date format
 var moment = require("moment");
-
-// Helper for making AJAX requests to our API
+// helper functions for making AJAX requests to our API
 var helpers = require("./utils/helpers");
-
+// creating the story component
 var Story = React.createClass({
 
   getInitialState: function(){
@@ -26,7 +24,6 @@ var Story = React.createClass({
     }
     this.setState({expanded: newstate});
   },
-
   handleHeartClick: function(i) {
     var hearts = parseInt(this.props.story[i].hearts) + 1;
     console.log("in handleHeartClick ", this.props.story[i]._id, " ", hearts);
@@ -37,7 +34,6 @@ var Story = React.createClass({
     this.setState({hearts: hearts});
     this.props.setHeartCounter(hearts);
   },
-
   handleFlagClick: function(i) {
     var flags = parseInt(this.props.story[i].flags) + 1;
     console.log("in handleFlagClick ", this.props.story[i]._id, " ", flags);
@@ -48,7 +44,6 @@ var Story = React.createClass({
     this.setState({flags: flags});
     this.props.setFlagCounter(flags);
   },
-
   render: function() {
     console.log(this.state.expanded);
     return (
@@ -71,7 +66,6 @@ var Story = React.createClass({
               <i onClick={() => this.handleHeartClick(i)}className="fa fa-heart fa-lg" id="heart" aria-hidden="true" title="like story"><button id="heartCounter" onClick={() => this.handleHeartClick(i)}>{card.hearts}</button></i>
               <img className="author" src={card.postedBy.picUrl} alt={card.postedBy.username} title={card.postedBy.username}/>
 
-              
             </div>
           </div>
         </div>
@@ -84,5 +78,5 @@ var Story = React.createClass({
   }
 });
 
-// Export the component back for use in other files
+// export the component
 module.exports = Story;

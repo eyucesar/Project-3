@@ -1,34 +1,23 @@
-// Include the axios package for performing HTTP requests (promise based alternative to request)
+// include the axios package for performing HTTP requests
 var axios = require("axios");
-
-// Geocoder API
-var geocodeAPI = "35e5548c618555b1a43eb4759d26b260";
-
-// Helper functions for making API Calls
+// helper functions for making API calls
 var helper = {
-
-  // This function hits our own server to retrieve the record of query results
+  // retrieve the stories from DB
   getStories: function() {
     console.log("here");
     return axios.get("/stories");
   },
-
-  // This function posts new searches to our database.
-  postHistory: function(location) {
-    return axios.post("/api", { location: location });
-  },
-
+  // post the heart count
   updateHearts(id, hearts) {
    console.log("updating " + id +" " + hearts);
    return axios.post("/updateHearts", {id, hearts});
   },
-
+  // post the flag count
   updateFlags(id, flags) {
    console.log("updating " + id +" " + flags);
    return axios.post("/updateFlags", {id, flags});
   }
-
 };
 
-// We export the API helper
+// export the helper functions
 module.exports = helper;
