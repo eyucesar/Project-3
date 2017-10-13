@@ -157,28 +157,6 @@ app.get("/newstory", function(req, res) {
   
 });
 
-//redirect to index.html when a nonexisting route is hit
-// app.use("*", function(req, res) {
-//   res.sendFile(__dirname + "/public/index.html");
-// });
-
-// // This is the route we will send GET requests to retrieve our most recent search data.
-// // We will call this route the moment our page gets rendered
-// app.get("/api", function(req, res) {
-
-//   // We will find all the records, sort it in descending order, then limit the records to 5
-//   History.find({}).sort([
-//     ["date", "descending"]
-//   ]).limit(5).exec(function(err, doc) {
-//     if (err) {
-//       console.log(err);
-//     }
-//     else {
-//       res.send(doc);
-//     }
-//   });
-// });
-
 app.post("/users", function(req, res) {
 
   // Check if username and password already exist

@@ -200,10 +200,10 @@ p {
     padding-top: 5px;
     font-size: 14px;
     line-height: 1.5;
-    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    word-wrap: break-word; 
 }
 
 h1 {
