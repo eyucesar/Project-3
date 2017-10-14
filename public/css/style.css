@@ -393,10 +393,9 @@ footer {
 }
 
 @media only screen and (max-width: 850px) {
-
-#brand-name {
-		margin-left: -10px;
-	}
+	#brand-name {
+			margin-left: -10px;
+		}
 }
 
 @media only screen and (max-width: 640px) {
@@ -514,10 +513,6 @@ footer {
 		font-size: 28px;
 	}
 
-	nav ul li {
-		margin-top: 46px;
-	}
-
 	nav {
 		height: 116px;
 		padding-right: 3%;
@@ -528,6 +523,16 @@ footer {
 	}
 
 	#brand-name {
-		margin-left: -30px;
+		margin-left: -40px;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+	nav ul li {
+		margin-top: -54px;
+	}
+
+	#brand-name {
+		margin-left: -44px;
 	}
 }
